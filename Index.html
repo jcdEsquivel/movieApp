@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="CineCenfotec">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cine de Proyecto 3</title>
+    <meta name="description" content="">
+    <!--css style sheet-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/screen.css">
+    <!--js scripts-->
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body ng-controller = "MainController">
+    <div id="home" class="boxed-view">
+        <header>
+        	<div ng-show = "bienvenidoShow" class="header-bar">
+        		<div class="container small-header">
+                    <div class="row">
+                    	<div class="col-md-12 col-sm-4">
+							<div class="inline-list to-right">
+								<p>Bienvenido nuevamente: {{userLogged.value}}</p>
+							</div>
+		            	</div>
+                    </div>
+                </div>
+        	</div>
+        	<section class="box border-bottom">
+        		<div class="text-dark-black  text-center fancy-heading">
+        			<h2>Cine CENFOTEC</h1>
+        		</div>
+        	</section>
+        </header>
+        <section ng-show="loginShow"  class="box border-bottom book-box"> <!--Login-->
+			<div class="container">
+				<div class="row">
+	        		<div class="col-md-8">
+				    	<p class="text-dark-black">Por favor, escriba su nombre de usuario y contraseña:</p>
+					</div>
+        		</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="booking-form">
+							<form ng-submit = "login()" method="GET" enctype="text/plain"  class="row no-padding" 
+							name="bookingHome">
+								<div class="col-md-3 col-sm-6">
+									<input type="text" ng-model="user.value" id="user" placeholder="Usuario" name="user" required>
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<input type="text" id="password" placeholder="Password" name="password" required>
+								</div>
+								<div class="col-md-2 col-sm-12 text-right">
+									<button type="submit" class="blue button-md soft-corners">Ingresar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> <!--/Login-->
+		<section ng-show="moviesShow" class="box border-bottom book-box"> <!--Película-->
+			<div class="container">
+				<div class="row">
+	        		<div class="col-md-8">
+				    	<p class="text-dark-black">Elija la película que desea ver:</p>
+					</div>
+					<table>
+						<tr ng-repeat="movie in movies">
+							<td><img ng-src="{{movie.Pic}}" class="center-block" width="300" height="300" 
+								alt="{{movie.Name}}"></td>
+							<td><h3 class="text-dark-black  text-center fancy-heading">{{movie.Name}}</h3>
+								<p class="text-dark-black">{{movie.Description}}</p></td>
+							<td>
+								<table>
+									<tr>
+										<button ng-click="movieSelected(movie.Tandas.Horario1)" 
+										class="blue button-md soft-corners">{{movie.Tandas.Horario1}}</button>
+									</tr>
+									<tr>
+										<button ng-click="movieSelected(movie.Tandas.Horario2)"
+										class="blue button-md soft-corners">{{movie.Tandas.Horario2}}</button>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+        		</div>
+				<div class="row">				
+				</div>
+			</div>
+		</section> <!--/Película-->
+		<section ng-show="seatsShow" class="box border-bottom book-box"> <!--Asientos-->
+			<div class="container">
+				<div class="row">
+	        		<div class="col-md-8">
+				    	<p class="text-dark-black">Elija los asientos:</p>
+					</div>
+        		</div>
+				<div class="row">
+					
+				</div>
+			</div>
+		</section> <!--/Asientos-->
+		<section ng-show="confirmationShow" class="box border-bottom book-box"> <!--Confirmación-->
+			<div class="container">
+				<div class="row">
+	        		<div class="col-md-8">
+				    	<p class="text-dark-black">Este es el resumen de su orden:</p>
+					</div>
+        		</div>
+				<div class="row">
+					
+				</div>
+			</div>
+		</section> <!--/Confirmación-->
+        <footer class="main-footer">
+			<div class="big-footer box footer-box dark-less">
+				<div class="container">
+					<div class="footer-sidebar row">
+						<div class="col-md-4 col-sm-6 widget">
+							<figure>
+								<a href="index.html">
+									<img src="img/SmartSoft.jpg" class="center-block" width="300" height="300" alt="Hotel Villa Tournon logo">
+								</a>
+							</figure>
+						</div>
+						<div class="col-md-4 center-social col-sm-6 widget post-widget">
+							<div class="text-dark-black text-center fancy-heading">
+								<h4 class="font-700">SmartSoft</h4>
+								<hr class="text-dark-black size-30 center-me">
+								<p>Creative Solutions</p>				
+							</div>					
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="small-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p class="center-social copyright center-me font-small">
+								<span class="uppercase" >copyright 2015</span>
+								<span> Desarrollado por </span>
+								<span>SmartSoft </span>	
+								<span>2015</span>	
+							</p>
+						</div>
+					</div> <!-- /.row -->
+				</div>			
+			</div><!-- /.small-footer -->	
+		</footer><!-- /.main-footer -->
+	</div>
+</body>
+</html>
