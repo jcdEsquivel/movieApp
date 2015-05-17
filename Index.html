@@ -95,10 +95,23 @@
 			</div>
 		</section> <!--/Película-->
 		<section ng-show="seatsShow" class="box border-bottom book-box"> <!--Asientos-->
-			<div class="container">
+			<div class="container" ng-controller="butaca">
 				<div class="row">
 	        		<div class="col-md-8">
-				    	<p class="text-dark-black">Elija los asientos:</p>
+				    	<p class="text-dark-black">{{name}}</p>
+				    	<p class="text-dark-black">{{currentPrice}}</p>
+
+				    	<ul id="thumbnails">
+						    <li class="clickme" ng-repeat="item in items" itemdata='item' index="{{$index}}">
+						    	<div ng-butaca>
+
+						    	</div>
+						    	<!--<div>
+						    		<img  src="{{item.src}}" ng-click="selectButaca()" id="but{{$index}}" />
+						    	</div>-->
+						    </li>
+						</ul>
+				    	
 					</div>
         		</div>
 				<div class="row">

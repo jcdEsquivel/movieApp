@@ -9,9 +9,76 @@ Creación: 15/5/2015
 Última modificación: 16/5/2015
 */
 (function() {
+
+	var currentValue = 0;
 	
 	var app = angular.module("CineCenfotec", []);
+
+	app.controller('butaca', function($scope) {
+	  $scope.name = 'Seleccione una butaca por favor...';
+	  
+	  $scope.items = [
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
+	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"}                         
+	  ];
+	 
+	  $scope.selectButaca = function()
+	  {
+	  	currentValue = currentValue + 8000;
+		$scope.currentPrice = currentValue;	  
+
+	  }
+
+	  $scope.removeButaca = function()
+	  {
+	  	currentValue = currentValue - 8000;
+		$scope.currentPrice = currentValue;	  
+
+	  }
+
+	});
+
+    app.directive('butaca', function () {
+	    return {
+	        restrict: 'A',
+	        template: '<div><img src="{{scr}}" ng-click="removeButaca()" id="{{id}}"/></div>',
+	        /*link: function (scope, element, attrs) {
+	            if (attrs.scr == "/Users/JD/PracticasProyecto3/Movie/img/butaca.png")
+	             {
+	                scope.scr = "/Users/JD/PracticasProyecto3/Movie/img/butacaBusy.png";
+	        	 }
+	   		 }*/
+    	}
+ 	});	
+
 	
+
+
+
 	var MainController = function($scope){ 
 		
 		//variable que guarda la tanda que se seleccionó
