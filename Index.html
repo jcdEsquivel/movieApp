@@ -33,6 +33,7 @@
         	<section class="box border-bottom">
         		<div class="text-dark-black  text-center fancy-heading">
         			<h2>Cine CENFOTEC</h1>
+        				<h2>Cine CENFOTEC</h1>
         		</div>
         	</section>
         </header>
@@ -99,16 +100,13 @@
 				<div class="row">
 	        		<div class="col-md-8">
 				    	<p class="text-dark-black">{{name}}</p>
-				    	<p class="text-dark-black">{{currentPrice}}</p>
+				    	<p class="text-dark-black">{{total}}</p>
 
 				    	<ul id="thumbnails">
-						    <li class="clickme" ng-repeat="item in items" itemdata='item' index="{{$index}}">
-						    	<div ng-butaca>
-
-						    	</div>
-						    	<!--<div>
-						    		<img  src="{{item.src}}" ng-click="selectButaca()" id="but{{$index}}" />
-						    	</div>-->
+						    <li class="clickme" ng-repeat="item in items" itemdata='item' index="{{$index}}">	
+						    	<butaca>
+						    		
+						    	</butaca>
 						    </li>
 						</ul>
 				    	

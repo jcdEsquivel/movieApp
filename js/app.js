@@ -10,11 +10,13 @@ Creación: 15/5/2015
 */
 (function() {
 
-	var currentValue = 0;
 	
 	var app = angular.module("CineCenfotec", []);
 
 	app.controller('butaca', function($scope) {
+
+	  $scope.total = 0;	
+
 	  $scope.name = 'Seleccione una butaca por favor...';
 	  
 	  $scope.items = [
@@ -45,40 +47,49 @@ Creación: 15/5/2015
 	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"},
 	    {"src":"/Users/JD/PracticasProyecto3/Movie/img/butaca.png"}                         
 	  ];
-	 
-	  $scope.selectButaca = function()
-	  {
-	  	currentValue = currentValue + 8000;
-		$scope.currentPrice = currentValue;	  
-
-	  }
-
-	  $scope.removeButaca = function()
-	  {
-	  	currentValue = currentValue - 8000;
-		$scope.currentPrice = currentValue;	  
-
-	  }
+		
 
 	});
 
-    app.directive('butaca', function () {
-	    return {
-	        restrict: 'A',
-	        template: '<div><img src="{{scr}}" ng-click="removeButaca()" id="{{id}}"/></div>',
-	        /*link: function (scope, element, attrs) {
-	            if (attrs.scr == "/Users/JD/PracticasProyecto3/Movie/img/butaca.png")
-	             {
-	                scope.scr = "/Users/JD/PracticasProyecto3/Movie/img/butacaBusy.png";
-	        	 }
-	   		 }*/
-    	}
- 	});	
+	app.directive('butaca', function () {
+	  return {
+		   scope:{
+		    total:'=',
+		    isOn: '@'
+		   },
+		   template: '<img src="/Users/JD/PracticasProyecto3/Movie/img/butaca.png"/>',
+		   link: function ($scope, element, attrs) {
+		    element.bind('click', function () { 
+		     
+		    	 $scope.isOn = false;
+
+		    	 alert($scope.isOn);
+
+			     if($scope.isOn == false)
+			     {
+				      $scope.isOn = true;
+				      $scope.total = $scope.total + 1000;
+				       alert($scope.isOn);
+				            
+				 }else{
+				      $scope.isOn = false;
+
+				      if($scope.total > 0){
+				       	$scope.total = $scope.total - 100;       		
+				 	  }     
+			     }
+
+		    	 $scope.$apply();
+   	 
+
+		    	 element.html('<img src="/Users/JD/PracticasProyecto3/Movie/img/butacaBusy.png"/>');	
+		    });
+
+	       }
+	    };
+	 });
 
 	
-
-
-
 	var MainController = function($scope){ 
 		
 		//variable que guarda la tanda que se seleccionó
